@@ -23,8 +23,17 @@ namespace UserMaintenance
             listBoxFullName.DisplayMember = "FullName";
             labelFullName.Text = Resource.FullName;
             buttonAdd.Text = Resource.Add;
+            buttonDelete.Text = Resource.Delete;
+            buttonWriteInFile.Text = Resource.Write;
             buttonAdd.Click += Button1_Click;
             buttonWriteInFile.Click += ButtonWriteInFile_Click;
+            buttonDelete.Click += ButtonDelete_Click;
+        }
+
+        private void ButtonDelete_Click(object sender, EventArgs e)
+        {
+            var del = (UserMaintenance.Entities.User)(listBoxFullName.SelectedItem);
+            users.Remove(del);
         }
 
         private void ButtonWriteInFile_Click(object sender, EventArgs e)

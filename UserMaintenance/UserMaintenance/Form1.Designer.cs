@@ -33,6 +33,7 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.listBoxFullName = new System.Windows.Forms.ListBox();
             this.buttonWriteInFile = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFullName
@@ -77,11 +78,21 @@
             this.buttonWriteInFile.Text = "button1";
             this.buttonWriteInFile.UseVisualStyleBackColor = true;
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(211, 70);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(166, 23);
+            this.buttonDelete.TabIndex = 7;
+            this.buttonDelete.Text = "button1";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(423, 274);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonWriteInFile);
             this.Controls.Add(this.listBoxFullName);
             this.Controls.Add(this.buttonAdd);
@@ -99,8 +110,9 @@
         private System.Windows.Forms.Label labelFullName;
         private System.Windows.Forms.TextBox textBoxFullName;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.ListBox listBoxFullName;
         private System.Windows.Forms.Button buttonWriteInFile;
+        private System.Windows.Forms.Button buttonDelete;
+        public System.Windows.Forms.ListBox listBoxFullName;
     }
 }
 
