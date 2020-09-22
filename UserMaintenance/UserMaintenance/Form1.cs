@@ -17,20 +17,20 @@ namespace UserMaintenance
         public Form1()
         {
             InitializeComponent();
-            listBox1.DataSource = users;
-            listBox1.ValueMember = "ID";
-            listBox1.DisplayMember = "FullName";
-            label1.Text = Resource.LastName;
-            label2.Text = Resource.FirstName;
-            button1.Text = Resource.Add;
-            button1.Click += Button1_Click;
+            listBoxFullName.DataSource = users;
+            listBoxFullName.ValueMember = "ID";
+            listBoxFullName.DisplayMember = "FullName";
+            labelLastName.Text = Resource.LastName;
+            labelFirstName.Text = Resource.FirstName;
+            buttonAdd.Text = Resource.Add;
+            buttonAdd.Click += Button1_Click;
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             User newuser = new User();
-            newuser.LastName = label1.Text;
-            newuser.FirstName = label2.Text;
+            newuser.LastName = textBoxLastName.Text;
+            newuser.FirstName = textBoxFirstName.Text;
             users.Add(newuser);
         }
     }
