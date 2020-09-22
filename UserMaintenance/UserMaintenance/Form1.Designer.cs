@@ -32,6 +32,7 @@
             this.textBoxFullName = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.listBoxFullName = new System.Windows.Forms.ListBox();
+            this.buttonWriteInFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFullName
@@ -67,11 +68,21 @@
             this.listBoxFullName.Size = new System.Drawing.Size(179, 212);
             this.listBoxFullName.TabIndex = 5;
             // 
+            // buttonWriteInFile
+            // 
+            this.buttonWriteInFile.Location = new System.Drawing.Point(211, 111);
+            this.buttonWriteInFile.Name = "buttonWriteInFile";
+            this.buttonWriteInFile.Size = new System.Drawing.Size(166, 23);
+            this.buttonWriteInFile.TabIndex = 6;
+            this.buttonWriteInFile.Text = "button1";
+            this.buttonWriteInFile.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(423, 274);
+            this.Controls.Add(this.buttonWriteInFile);
             this.Controls.Add(this.listBoxFullName);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.textBoxFullName);
@@ -89,6 +100,7 @@
         private System.Windows.Forms.TextBox textBoxFullName;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ListBox listBoxFullName;
+        private System.Windows.Forms.Button buttonWriteInFile;
     }
 }
 
