@@ -20,8 +20,7 @@ namespace UserMaintenance
             listBoxFullName.DataSource = users;
             listBoxFullName.ValueMember = "ID";
             listBoxFullName.DisplayMember = "FullName";
-            labelLastName.Text = Resource.LastName;
-            labelFirstName.Text = Resource.FirstName;
+            labelFullName.Text = Resource.FullName;
             buttonAdd.Text = Resource.Add;
             buttonAdd.Click += Button1_Click;
         }
@@ -29,8 +28,7 @@ namespace UserMaintenance
         private void Button1_Click(object sender, EventArgs e)
         {
             User newuser = new User();
-            newuser.LastName = textBoxLastName.Text;
-            newuser.FirstName = textBoxFirstName.Text;
+            newuser.FullName = textBoxFullName.Text;
             users.Add(newuser);
         }
     }
