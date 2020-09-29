@@ -42,7 +42,7 @@
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityContainer Name="RealEstateEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Flat" EntityType="Self.Flat" />
+          <EntitySet Name="Flat" EntityType="RealEstateModel.Flat" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
