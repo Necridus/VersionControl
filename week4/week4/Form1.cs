@@ -129,7 +129,7 @@ namespace week4
             Excel.Range firstColRange = xlSheet.get_Range(GetCell(2, 1), GetCell(lastRowID, 1));
             firstColRange.Font.Bold = true;
             firstColRange.Interior.Color = Color.LightYellow;
-            Excel.Range lastColRange = xlSheet.get_Range(GetCell(1, headers.Length), GetCell(lastRowID, headers.Length));
+            Excel.Range lastColRange = xlSheet.get_Range(GetCell(2, headers.Length), GetCell(lastRowID, headers.Length));
             lastColRange.Interior.Color = Color.LightGreen;
             lastColRange.NumberFormat = "$????.??";
         }
