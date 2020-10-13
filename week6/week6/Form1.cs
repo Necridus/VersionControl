@@ -17,11 +17,35 @@ namespace week6
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         string result;
         public Form1()
         {
             InitializeComponent();
+            GetCurrencyList();
             RefreshData();
+        }
+
+        private void GetCurrencyList()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();
+            var response = mnbService.GetCurrencies(request);
+            var resultC = response.GetCurrenciesResult;
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(resultC);
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                int hossz = element.InnerText.Length;
+                for (int i = 0; i < hossz / 3; i++)
+                {
+                    var childElement = (XmlElement)element.ChildNodes[i];
+                    var akarmi = childElement.InnerText;
+                    akarmi.ToString();
+                    Currencies.Add(akarmi);
+                }
+            }
+            currencyCB.DataSource = Currencies;
         }
 
         private void RefreshData()
@@ -34,7 +58,7 @@ namespace week6
             ShowData();
         }
 
-        public void CallWebService()
+        private void CallWebService()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
             var request = new GetExchangeRatesRequestBody()
@@ -46,7 +70,8 @@ namespace week6
             var response = mnbService.GetExchangeRates(request);
             result = response.GetExchangeRatesResult;
         }
-        public void ProcessXML()
+
+        private void ProcessXML()
         {
             XmlDocument xml = new XmlDocument();
             xml.LoadXml(result);
@@ -54,9 +79,10 @@ namespace week6
             {
                 RateData rateData = new RateData();
                 Rates.Add(rateData);
-                rateData.Date = DateTime.Parse(element.GetAttribute("date"));
                 var childElement = (XmlElement)element.ChildNodes[0];
-                rateData.Currency = childElement.GetAttribute("curr");
+                if (childElement == null)
+                    continue;
+                rateData.Date = DateTime.Parse(element.GetAttribute("date"));
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
                 var value = decimal.Parse(childElement.InnerText);
                 if (unit != 0)
