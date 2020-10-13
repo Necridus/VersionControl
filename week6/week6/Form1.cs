@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using week6.Entities;
 using week6.MnbServiceReference;
 
@@ -15,14 +16,17 @@ namespace week6
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        string result;
         public Form1()
         {
             InitializeComponent();
-            CallWebService();
+
             ratesDGW.DataSource = Rates;
+            CallWebService();
+            ProcessXML();
         }
 
-        private void CallWebService()
+        public void CallWebService()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
             var request = new GetExchangeRatesRequestBody()
@@ -32,7 +36,27 @@ namespace week6
                 endDate = "2020-06-30"
             };
             var response = mnbService.GetExchangeRates(request);
-            var result = response.GetExchangeRatesResult;
+            result = response.GetExchangeRatesResult;
         }
+        public void ProcessXML()
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                RateData rateData = new RateData();
+                Rates.Add(rateData);
+                rateData.Date = DateTime.Parse(element.GetAttribute("Date"));
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rateData.Currency = childElement.GetAttribute("curr");
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit!=0)
+                {
+                    rateData.Value = value / unit;
+                }
+            }
+        }
+
     }
 }
