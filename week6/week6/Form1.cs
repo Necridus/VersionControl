@@ -46,7 +46,7 @@ namespace week6
             {
                 RateData rateData = new RateData();
                 Rates.Add(rateData);
-                rateData.Date = DateTime.Parse(element.GetAttribute("Date"));
+                rateData.Date = DateTime.Parse(element.GetAttribute("date"));
                 var childElement = (XmlElement)element.ChildNodes[0];
                 rateData.Currency = childElement.GetAttribute("curr");
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
