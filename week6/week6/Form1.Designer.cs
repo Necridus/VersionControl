@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ratesDGW = new System.Windows.Forms.DataGridView();
             this.chartRateData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.startDateDP = new System.Windows.Forms.DateTimePicker();
@@ -42,25 +42,27 @@
             // 
             // ratesDGW
             // 
+            this.ratesDGW.AllowUserToAddRows = false;
+            this.ratesDGW.AllowUserToDeleteRows = false;
             this.ratesDGW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ratesDGW.Enabled = false;
             this.ratesDGW.Location = new System.Drawing.Point(12, 91);
             this.ratesDGW.Name = "ratesDGW";
+            this.ratesDGW.ReadOnly = true;
             this.ratesDGW.Size = new System.Drawing.Size(327, 347);
             this.ratesDGW.TabIndex = 0;
             // 
             // chartRateData
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartRateData.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartRateData.Legends.Add(legend6);
+            chartArea1.Name = "ChartArea1";
+            this.chartRateData.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartRateData.Legends.Add(legend1);
             this.chartRateData.Location = new System.Drawing.Point(345, 91);
             this.chartRateData.Name = "chartRateData";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chartRateData.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartRateData.Series.Add(series1);
             this.chartRateData.Size = new System.Drawing.Size(443, 347);
             this.chartRateData.TabIndex = 1;
             this.chartRateData.Text = "chart1";
