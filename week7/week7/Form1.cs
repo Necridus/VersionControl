@@ -24,6 +24,25 @@ namespace week7
             Population = GetPopulation(@"C:\Temp\nép.csv");
             birthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             deathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
+            Simulation();
+        }
+
+        private void Simulation()
+        {
+            for (int year = 2005; year <= 2024; year++)
+            {
+                for (int i = 0; i < Population.Count; i++)
+                {
+                    //majd
+                }
+                int nbrOfMales = (from x in Population
+                                  where x.Gender == Gender.Male && x.IsAlive
+                                  select x).Count();
+                int nbrOfFemales = (from x in Population
+                                    where x.Gender == Gender.Female && x.IsAlive
+                                    select x).Count();
+                Console.WriteLine(string.Format("Év: {0} Férfiak: {1} Nők: {2}", year, nbrOfMales, nbrOfFemales));
+            }
         }
 
         public List<DeathProbability> GetDeathProbabilities(string csvpath)
@@ -56,7 +75,7 @@ namespace week7
                     birthProbabilities.Add(new BirthProbability()
                     {
                         Age = int.Parse(line[0]),
-                        NbrOfChildren=int.Parse(line[1]),
+                        NbrOfChildren = int.Parse(line[1]),
                         Probability = double.Parse(line[2])
                     });
                 }
