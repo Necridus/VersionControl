@@ -77,7 +77,7 @@ namespace week8
 
         private void ballFactoryBT_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory(){BallColor = colorBT.BackColor};
         }
 
         private void colorBT_Click(object sender, EventArgs e)
