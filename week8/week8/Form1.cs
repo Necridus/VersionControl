@@ -47,7 +47,9 @@ namespace week8
                 Controls.Remove(_nextToy);
             }
             _nextToy = Factory.CreateNew();
-            _nextToy.Top = nextLB.Top + nextLB.Height + 20;
+            _nextToy.Top = nextLB.Top;
+            _nextToy.Left = nextLB.Left+70;
+            Controls.Add(_nextToy);
         }
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
