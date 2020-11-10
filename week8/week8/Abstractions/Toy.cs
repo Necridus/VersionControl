@@ -6,27 +6,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace week8.Entities
+namespace week8.Abstractions
 {
-    public class Ball : Label
+    public abstract class Toy : Label
     {
-        public Ball()
+        public Toy()
         {
             AutoSize = false;
             Height = 50;
             Width = Height;
-            Paint += Ball_Paint;
+            Paint += Toy_Paint;
         }
 
-        private void Ball_Paint(object sender, PaintEventArgs e)
+        private void Toy_Paint(object sender, PaintEventArgs e)
         {
             DrawImage(e.Graphics);
         }
-        protected void DrawImage(Graphics g)
-        {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
-        }
-        public void MoveBall()
+        protected abstract void DrawImage(Graphics g);
+        public virtual void MoveToy()
         {
             Left += 1;
         }
