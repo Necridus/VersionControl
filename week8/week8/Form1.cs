@@ -31,15 +31,6 @@ namespace week8
         {
             InitializeComponent();
         }
-
-        private void createTimer_Tick(object sender, EventArgs e)
-        {
-            var toy = Factory.CreateNew();
-            toy.Left = -toy.Width;
-            _toys.Add(toy);
-            mainPanel.Controls.Add(toy);
-        }
-
         public void DisplayNext()
         {
             if (_nextToy != null)
@@ -51,6 +42,15 @@ namespace week8
             _nextToy.Left = nextLB.Left+70;
             Controls.Add(_nextToy);
         }
+
+        private void createTimer_Tick(object sender, EventArgs e)
+        {
+            var toy = Factory.CreateNew();
+            toy.Left = -toy.Width;
+            _toys.Add(toy);
+            mainPanel.Controls.Add(toy);
+        }
+
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
             int maxposition = 0;
@@ -77,10 +77,15 @@ namespace week8
 
         private void ballFactoryBT_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory(){BallColor = colorBT.BackColor};
+            Factory = new BallFactory(){BallColor = ballcolorBT.BackColor};
         }
 
-        private void colorBT_Click(object sender, EventArgs e)
+        private void presentFactoryBT_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory() { BoxColor = boxBT.BackColor, RibbonColor=ribbonBT.BackColor };
+        }
+
+        private void boxcolorBT_Click(object sender, EventArgs e)
         {
             if (_nextToy==null)
             {
@@ -88,12 +93,13 @@ namespace week8
             }
             var button = (Button)sender;
             ColorDialog colorDialog = new ColorDialog();
-            colorDialog.Color = colorBT.BackColor;
+            colorDialog.Color = button.BackColor;
             if (colorDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
             button.BackColor = colorDialog.Color;
         }
+
     }
 }
