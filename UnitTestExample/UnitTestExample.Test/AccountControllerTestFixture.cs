@@ -108,5 +108,32 @@ namespace UnitTestExample.Test
                 Assert.IsInstanceOf<ValidationException>(ex);
             }
         }
+
+        [
+            Test,
+            TestCase("irf@uni-corvinus.hu", "Abcd1234"),
+            TestCase("irf@uni-corvinus.hu", "Abcd1234567"),
+        ]
+        public void TestRegisterApplicationException(string email, string password)
+        {
+            //Arrange
+            AccountController accountController = new AccountController();
+            var accountServiceMock = new Mock<IAccountManager>(MockBehavior.Strict);
+            accountServiceMock
+                .Setup(m => m.CreateAccount(It.IsAny<Account>()))
+                .Throws<ApplicationException>();
+            accountController.AccountManager = accountServiceMock.Object;
+
+            //Act
+            try
+            {
+                var actualResult = accountController.Register(email, password);
+                Assert.Fail();
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOf<ApplicationException>(ex);
+            }
+        }
     }
 }
