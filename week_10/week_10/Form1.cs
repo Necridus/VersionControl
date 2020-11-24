@@ -29,7 +29,18 @@ namespace week_10
             {
                 gc.AddPlayer(nbrOfSteps);
             }
+            gc.GameOver += Gc_GameOver;
             gc.Start();
+        }
+
+        private void Gc_GameOver(object sender)
+        {
+            generation++;
+            label1.Text = String.Format("{0}. generáció", generation);
+            var playerList = from p in gc.GetCurrentPlayers()
+                             orderby p.GetFitness() descending
+                             select p;
+            var topPerformers = playerList.Take(populationSize / 2).ToList();
         }
     }
 }
